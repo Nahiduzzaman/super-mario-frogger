@@ -5,13 +5,13 @@ var Engine = (function(global) {
       ctx = can.getContext('2d'),
       lastTime;
 
-      canvas.width = 504;
-      canvas.height = 606;
+      can.width = 505;
+      can.height = 606;
       doc.body.appendChild(can);
 
   function main() {
     var now = Date.now(),
-        dt = (now - lasTime) / 1000.0;
+        dt = (now - lastTime) / 1000.0;
     update(dt);
     render();
     lastTime = now;
@@ -47,7 +47,7 @@ var Engine = (function(global) {
     return collided;
   }
 
-  function updateEntities() {
+  function updateEntities(dt) {
     allEnemies.forEach(function(enemy){
       enemy.update(dt);
     });
@@ -69,7 +69,7 @@ var Engine = (function(global) {
 
     for (row = 0 ; row < rows ; row++) {
       for (col = 0 ; col < cols ; col++){
-        ctx.drawImage(rowImages[row], cols * colWidth, rows * rowHeight);
+        ctx.drawImage(Resources.get(rowImages[row]), col * colWidth, row * rowHeight);
       }
     }
 
@@ -86,6 +86,14 @@ var Engine = (function(global) {
   function reset(){
 
   }
+
+  Resources.load([
+      'images/stone-block.png',
+      'images/water-block.png',
+      'images/grass-block.png',
+      'images/enemy-bug.png',
+      'images/char-boy.png'
+  ]);
 
   Resources.onReady(init);
 
