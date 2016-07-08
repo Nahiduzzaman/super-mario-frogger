@@ -31,7 +31,6 @@ var playerSteps = {
   x: 0,
   y: 0
 };
-
 /**
  * Speed ratio of the enemy. Offers more control to tweak their speed.
  */
