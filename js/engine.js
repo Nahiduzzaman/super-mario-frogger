@@ -30,22 +30,21 @@ var Engine = (function(global) {
   }
 
   function checkCollisions() {
-    allEnemies.forEach(function(enemy){
+    allEnemies.forEach(function(enemy) {
       if(collided(player, enemy)){
         player.y = bounds.bottom;
       }
     });
   }
 
-  function collided(player, entity){
+  function collided(player, entity) {
+    var collided = false;
     if(Math.abs(player.x -  entity.x) < collisionTolerance.x){
       if(Math.abs(player.y - entity.y) < collisionTolerance.y){
-        return true;
+        collided =  true;
       }
     }
-    else{
-      return false;
-    }
+    return collided;
   }
 
   function updateEntities() {
@@ -56,7 +55,40 @@ var Engine = (function(global) {
   }
 
   function render() {
+    var rowImages = [
+      'images/water-block.png',
+      'images/stone-block.png',
+      'images/stone-block.png',
+      'images/stone-block.png',
+      'images/grass-block.png',
+      'images/grass-block.png',
+    ],
+    rows = numRows,
+    cols = numCols,
+    row, col ;
+
+    for (row = 0 ; row < rows ; row++) {
+      for (col = 0 ; col < cols ; col++){
+        ctx.drawImage(rowImages[row], cols * colWidth, rows * rowHeight);
+      }
+    }
+
+    renderEntities();
+  }
+
+  function renderEntities(){
+    allEnemies.forEach(function(enemy){
+      enemy.render();
+    });
+    player.render();
+  }
+
+  function reset(){
 
   }
+
+  Resources.onReady(init);
+
+  global.ctx = ctx;
 
 })(this);
