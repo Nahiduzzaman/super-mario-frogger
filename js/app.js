@@ -8,7 +8,22 @@
   left: 0,
   right: 0
 };
-
+/**
+ * Height of a row (wheight of background image unit)
+ */
+var rowHeight = 0;
+/**
+ * Width of a column (width of background image unit)
+ */
+var colWidth = 0;
+/**
+ * Number of rows of the game canvas
+ */
+var numRows = 0;
+/**
+ * Number of columns of the game canvas
+ */
+var numCols = 0;
 /**
  * Player vertical and horizontal steps
  */
