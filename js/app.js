@@ -51,7 +51,7 @@ Enemy.prototype.update = function(dt){
 };
 
 Enemy.prototype.render = function(){
-  ctx.drawImage(image, this.x, this.y);
+  ctx.drawImage(Resources.load(this.sprite), this.x, this.y);
 };
 
 var Player = function(){
@@ -67,7 +67,7 @@ Player.prototype.update = function(dt){
   if (this.y<bounds.top) { this.y = bounds.top;}
 };
 
-Player.handleInputKey = function(keyCode){
+Player.prototype.handleInputKey = function(keyCode){
   switch(keyCode){
 
     case 'up':
@@ -89,15 +89,15 @@ Player.handleInputKey = function(keyCode){
 };
 
 Player.prototype.render = function(){
-  ctx.drawImage(image, this.x, this.y);
+  ctx.drawImage(Resources.load(this.sprite), this.x, this.y);
 };
 
-document.addEvenListener('keyup', function(event){
+document.addEvenListener('keyup', function(e){
   var keys = {
-    '38': 'up',
-    '40': 'down',
-    '37': 'left',
-    '39': 'right'
+    38: 'up',
+    40: 'down',
+    37: 'left',
+    39: 'right'
   };
-  Player.prototype.handleInputKey(event.keyCode[keys]);
+  Player.handleInputKey(keys[e.keyCode]);
 });
