@@ -28,6 +28,8 @@
           });
         }
       };
+      resourceCache[url] = false;
+      img.src = url;
     }
   }
 
@@ -38,14 +40,15 @@
   function isReady() {
     var ready = true;
     for(var k in resourceCache) {
-      if(resourceCache.hasOwnProperty(k) && !resourceCache[k]) {
+      if(resourceCache.hasOwnProperty(k) &&
+        !resourceCache[k]) {
         ready = false;
       }
     }
     return ready;
   }
 
-  function onRady(func) {
+  function onReady(func) {
     readyCallbacks.push(func);
   }
 
