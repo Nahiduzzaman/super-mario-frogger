@@ -78,7 +78,7 @@ Player.prototype.render = function(){
   ctx.drawImage(image, this.x, this.y);
 };
 
-document.addEvenListener('keyUp', function(event){
+document.addEvenListener('keyup', function(event){
   var keys = {
     '38': 'up',
     '40': 'down',
