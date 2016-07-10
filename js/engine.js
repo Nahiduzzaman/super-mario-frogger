@@ -48,6 +48,9 @@ var Engine = (function(global) {
   }
 
   function updateEntities(dt) {
+    allClouds.forEach(function(cloud){
+      cloud.update(dt);
+    });
     allEnemies.forEach(function(enemy){
       enemy.update(dt);
     });
@@ -62,6 +65,7 @@ var Engine = (function(global) {
       'images/bridge-block.png',
       'images/bridge-block.png',
       'images/ground-block.png',
+      'images/cloud.png'
     ],
     rows = numRows,
     cols = numCols,
@@ -77,6 +81,9 @@ var Engine = (function(global) {
   }
 
   function renderEntities(){
+    allClouds.forEach(function(cloud){
+      cloud.render();
+    });
     allEnemies.forEach(function(enemy){
       enemy.render();
     });
@@ -92,7 +99,9 @@ var Engine = (function(global) {
       'images/bridge-block.png',
       'images/ground-block.png',
       'images/goomba.png',
-      'images/mario.png'
+      'images/mario.png',
+      'images/cloud.png'
+
   ]);
 
   Resources.onReady(init);

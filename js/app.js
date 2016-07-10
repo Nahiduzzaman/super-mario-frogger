@@ -1,12 +1,11 @@
-
 /**
  * Canvas bounds
  */
- var bounds = {
-  top: 23,
-  bottom: 524,
-  left: 10,
-  right: 463
+var bounds = {
+    top: 23,
+    bottom: 524,
+    left: 10,
+    right: 463
 };
 /**
  * Height of a row (wheight of background image unit)
@@ -28,8 +27,8 @@ var numCols = 5;
  * Player vertical and horizontal steps
  */
 var playerSteps = {
-  x: 25,
-  y: 101
+    x: 25,
+    y: 101
 };
 /**
  * Speed ratio of the enemy. Offers more control to tweak their speed.
@@ -37,82 +36,120 @@ var playerSteps = {
 var speedRatio = 10;
 
 var collisionTolerance = {
-  x: 35,
-  y: 30
+    x: 35,
+    y: 30
+};
+var Enemy = function(x, y, speed) {
+    this.x = x;
+    this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
+    this.speed = speed * speedRatio;
+    this.sprite = 'images/goomba.png';
 };
 
-var Enemy = function(x, y, speed){
-  this.x = x;
-  this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
-  this.speed = speed * speedRatio;
-  this.sprite = 'images/goomba.png';
+Enemy.prototype.update = function(dt) {
+    this.x += this.speed * dt;
+    if (this.x > (bounds.right + 100)) {
+        this.x = bounds.left;
+    }
 };
 
-Enemy.prototype.update = function(dt){
-  this.x += this.speed  * dt;
-  if (this.x > (bounds.right + 100)){
-    this.x = bounds.left;
-  }
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.render = function(){
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+var Player = function() {
+    this.y = bounds.bottom;
+    this.x = bounds.right / 2;
+    this.sprite = 'images/mario.png';
 };
 
-var Player = function(){
-  this.y = bounds.bottom;
-  this.x = bounds.right/2;
-  this.sprite = 'images/mario.png';
+Player.prototype.update = function(dt) {
+    if (this.x > bounds.right) {
+        this.x = bounds.right;
+    }
+    if (this.x < bounds.left) {
+        this.x = bounds.left;
+    }
+    if (this.y > bounds.bottom) {
+        this.y = bounds.bottom;
+    }
+    if (this.y < bounds.top) {
+        this.y = bounds.bottom;
+    }
 };
 
-Player.prototype.update = function(dt){
-  if (this.x>bounds.right) { this.x = bounds.right;}
-  if (this.x<bounds.left) { this.x = bounds.left;}
-  if (this.y>bounds.bottom) { this.y = bounds.bottom;}
-  if (this.y<bounds.top) { this.y = bounds.bottom;}
+Player.prototype.handleInputKey = function(keyCode) {
+    switch (keyCode) {
+
+        case 'up':
+            this.y -= playerSteps.y;
+            break;
+
+        case 'down':
+            this.y += playerSteps.y;
+            break;
+
+        case 'left':
+            this.x -= playerSteps.x;
+            break;
+
+        case 'right':
+            this.x += playerSteps.x;
+            break;
+    }
 };
 
-Player.prototype.handleInputKey = function(keyCode){
-  switch(keyCode){
-
-    case 'up':
-    this.y -= playerSteps.y;
-    break;
-
-    case 'down':
-    this.y += playerSteps.y;
-    break;
-
-    case 'left':
-    this.x -= playerSteps.x;
-    break;
-
-    case 'right':
-    this.x += playerSteps.x;
-    break;
-  }
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.render = function(){
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+var Cloud = function(x, y, speed) {
+    this.x = x;
+    this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
+    this.speed = speed * speedRatio;
+    this.sprite = 'images/cloud.png';
+};
+
+Cloud.prototype.update = function(dt) {
+    this.x += this.speed * dt;
+    if (this.x > (bounds.right + 100)) {
+        this.x = bounds.left;
+    }
+};
+
+Cloud.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 var allEnemies = [
+    new Enemy(-100, 1, 8),
     new Enemy(-100, 2, 12),
     new Enemy(-800, 3, 11),
     new Enemy(-700, 4, 15),
     new Enemy(-300, 4, 9),
-    new Enemy(-500, 1, 10),
-
+    new Enemy(-500, 1, 10)
+];
+var allClouds = [
+    new Cloud(0, 0, 1),
+    new Cloud(-800, 3, 2),
+    new Cloud(-600, 2, 3),
+    new Cloud(-100, 4, 5),
+    new Cloud(-500, 2, 1),
+    new Cloud(0, 1, 1),
+    new Cloud(-400, 2, 2),
+    new Cloud(-300, 4, 3),
+    new Cloud(-50, 2, 5),
+    new Cloud(-250, 0, 1)
 ];
 var player = new Player();
 
-document.addEventListener('keyup', function(e){
-  var keys = {
-    38: 'up',
-    40: 'down',
-    37: 'left',
-    39: 'right'
-  };
-  player.handleInputKey(keys[e.keyCode]);
+document.addEventListener('keyup', function(e) {
+    var keys = {
+        38: 'up',
+        40: 'down',
+        37: 'left',
+        39: 'right'
+    };
+    player.handleInputKey(keys[e.keyCode]);
 });
