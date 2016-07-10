@@ -108,7 +108,7 @@ var Cloud = function(x, y, speed) {
     this.x = x;
     this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
     this.speed = speed * speedRatio;
-    this.sprite = 'images/cloud.png';
+    this.sprite = Math.random() < 0.5 ? 'images/small-cloud.png' : 'images/big-cloud.png';
 };
 
 Cloud.prototype.update = function(dt) {

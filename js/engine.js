@@ -100,7 +100,8 @@ var Engine = (function(global) {
       'images/ground-block.png',
       'images/goomba.png',
       'images/mario.png',
-      'images/cloud.png'
+      'images/small-cloud.png',
+      'images/big-cloud.png'
 
   ]);
 
