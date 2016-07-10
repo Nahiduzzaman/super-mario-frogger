@@ -3,15 +3,15 @@
  * Canvas bounds
  */
  var bounds = {
-  top: -35,
-  bottom: 380,
-  left: -2,
-  right: 402
+  top: 23,
+  bottom: 524,
+  left: 10,
+  right: 463
 };
 /**
  * Height of a row (wheight of background image unit)
  */
-var rowHeight = 81;
+var rowHeight = 101;
 /**
  * Width of a column (width of background image unit)
  */
@@ -28,8 +28,8 @@ var numCols = 5;
  * Player vertical and horizontal steps
  */
 var playerSteps = {
-  x: 101,
-  y: 83
+  x: 25,
+  y: 101
 };
 /**
  * Speed ratio of the enemy. Offers more control to tweak their speed.
@@ -37,15 +37,15 @@ var playerSteps = {
 var speedRatio = 10;
 
 var collisionTolerance = {
-  x: 60,
+  x: 35,
   y: 30
 };
 
 var Enemy = function(x, y, speed){
   this.x = x;
-  this.y = (y * rowHeight) + (0.7 * rowHeight);
+  this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
   this.speed = speed * speedRatio;
-  this.sprite = 'images/enemy-bug.png';
+  this.sprite = 'images/goomba.png';
 };
 
 Enemy.prototype.update = function(dt){
@@ -62,7 +62,7 @@ Enemy.prototype.render = function(){
 var Player = function(){
   this.y = bounds.bottom;
   this.x = bounds.right/2;
-  this.sprite = 'images/char-boy.png';
+  this.sprite = 'images/mario.png';
 };
 
 Player.prototype.update = function(dt){
@@ -98,10 +98,10 @@ Player.prototype.render = function(){
 };
 
 var allEnemies = [
-    new Enemy(-100, 1, 12),
-    new Enemy(-800, 2, 11),
-    new Enemy(-700, 0, 15),
-    new Enemy(-300, 2, 9),
+    new Enemy(-100, 2, 12),
+    new Enemy(-800, 3, 11),
+    new Enemy(-700, 4, 15),
+    new Enemy(-300, 4, 9),
 ];
 var player = new Player();
 

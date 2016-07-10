@@ -56,12 +56,12 @@ var Engine = (function(global) {
 
   function render() {
     var rowImages = [
-      'images/water-block.png',
-      'images/stone-block.png',
-      'images/stone-block.png',
-      'images/stone-block.png',
-      'images/grass-block.png',
-      'images/grass-block.png',
+      'images/sky-block.png',
+      'images/bridge-block.png',
+      'images/bridge-block.png',
+      'images/bridge-block.png',
+      'images/bridge-block.png',
+      'images/ground-block.png',
     ],
     rows = numRows,
     cols = numCols,
@@ -88,11 +88,11 @@ var Engine = (function(global) {
   }
 
   Resources.load([
-      'images/stone-block.png',
-      'images/water-block.png',
-      'images/grass-block.png',
-      'images/enemy-bug.png',
-      'images/char-boy.png'
+      'images/sky-block.png',
+      'images/bridge-block.png',
+      'images/ground-block.png',
+      'images/goomba.png',
+      'images/mario.png'
   ]);
 
   Resources.onReady(init);
