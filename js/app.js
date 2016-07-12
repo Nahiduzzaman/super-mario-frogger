@@ -2,10 +2,10 @@
  * Canvas bounds
  */
 var bounds = {
-    top: 23,
-    bottom: 524,
+    top: 121,
+    bottom: 625,
     left: 10,
-    right: 463
+    right: 763
 };
 /**
  * Height of a row (wheight of background image unit)
@@ -18,11 +18,11 @@ var colWidth = 101;
 /**
  * Number of rows of the game canvas
  */
-var numRows = 6;
+var numRows = 8;
 /**
  * Number of columns of the game canvas
  */
-var numCols = 5;
+var numCols = 8;
 /**
  * Player vertical and horizontal steps
  */
@@ -41,7 +41,7 @@ var collisionTolerance = {
 };
 var Enemy = function(x, y, speed) {
     this.x = x;
-    this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
+    this.y = (y * rowHeight) + (0.5 * rowHeight) + 73;
     this.speed = speed * speedRatio;
     this.sprite = 'images/goomba.png';
 };
@@ -74,7 +74,7 @@ Player.prototype.update = function(dt) {
         this.y = bounds.bottom;
     }
     if (this.y < bounds.top) {
-        this.y = bounds.bottom;
+        this.y = bounds.top;
     }
 };
 
@@ -108,7 +108,7 @@ Player.prototype.render = function() {
 
 var Cloud = function(x, y, speed) {
     this.x = x;
-    this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
+    this.y = (y * rowHeight) + (0.5 * rowHeight) - 50;
     this.speed = speed * speedRatio;
     this.sprite = Math.random() < 0.5 ? 'images/small-cloud.png' : 'images/big-cloud.png';
 };
@@ -127,7 +127,7 @@ Cloud.prototype.render = function() {
 
 var Coin = function(x, y) {
     this.x = (x * colWidth) + (0.5 * colWidth) - 10;
-    this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
+    this.y = (y * rowHeight) + (0.5 * rowHeight) + 73;
     this.sprite = 'images/coin.png';
 };
 
@@ -144,23 +144,23 @@ var allEnemies = [
     new Enemy(-500, 1, 10)
 ];
 var allClouds = [
-    new Cloud(0, 0, 1),
+    new Cloud(0, 2, 1),
     new Cloud(-800, 3, 2),
     new Cloud(-600, 1, 3),
     new Cloud(-100, 4, 5),
     new Cloud(-100, 2, 1),
     new Cloud(0, 1, 1),
     new Cloud(-400, 2, 2),
-    new Cloud(-300, 0, 3),
+    new Cloud(-300, 3, 3),
     new Cloud(-50, 1, 5),
-    new Cloud(-250, 0, 1)
+    new Cloud(-250, 1, 1)
 ];
 
 var allCoins = (function(){
   var coins=[];
   for(var i = 0 ; i < numRows ; i++){
     console.log(i);
-    for( var j = 0 ; j < numCols ; j++){
+    for( var j = 0 ; j < (numCols -2) ; j++){
       coins.push(new Coin(i,j));
     }
   }

@@ -5,8 +5,8 @@ var Engine = (function(global) {
       ctx = can.getContext('2d'),
       lastTime;
 
-      can.width = 505;
-      can.height = 606;
+      can.width = 808;
+      can.height = 808;
       doc.body.appendChild(can);
 
   function main() {
@@ -65,12 +65,14 @@ var Engine = (function(global) {
 
   function render() {
     var rowImages = [
+      'images/plain-sky-block.png',
       'images/sky-block.png',
       'images/bridge-block.png',
       'images/bridge-block.png',
       'images/bridge-block.png',
       'images/bridge-block.png',
       'images/ground-block.png',
+      'images/plain-ground-block.png',
       'images/cloud.png'
     ],
     rows = numRows,
@@ -100,13 +102,15 @@ var Engine = (function(global) {
   }
 
   function reset(){
-
+    lastTime = Date.now();
   }
 
   Resources.load([
+      'images/plain-sky-block.png',
       'images/sky-block.png',
       'images/bridge-block.png',
       'images/ground-block.png',
+      'images/plain-ground-block.png',
       'images/goomba.png',
       'images/mario-right.png',
       'images/mario-left.png',
