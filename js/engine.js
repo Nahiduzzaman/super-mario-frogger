@@ -99,7 +99,8 @@ var Engine = (function(global) {
       'images/bridge-block.png',
       'images/ground-block.png',
       'images/goomba.png',
-      'images/mario.png',
+      'images/mario-right.png',
+      'images/mario-left.png',
       'images/small-cloud.png',
       'images/big-cloud.png'
 

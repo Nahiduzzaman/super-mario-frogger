@@ -60,7 +60,7 @@ Enemy.prototype.render = function() {
 var Player = function() {
     this.y = bounds.bottom;
     this.x = bounds.right / 2;
-    this.sprite = 'images/mario.png';
+    this.sprite = 'images/mario-right.png';
 };
 
 Player.prototype.update = function(dt) {
@@ -91,10 +91,12 @@ Player.prototype.handleInputKey = function(keyCode) {
 
         case 'left':
             this.x -= playerSteps.x;
+            this.sprite = 'images/mario-left.png';
             break;
 
         case 'right':
             this.x += playerSteps.x;
+            this.sprite = 'images/mario-right.png';
             break;
     }
 };
