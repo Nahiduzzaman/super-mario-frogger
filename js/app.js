@@ -128,11 +128,32 @@ Cloud.prototype.render = function() {
 var Coin = function(x, y) {
     this.x = (x * colWidth) + (0.5 * colWidth) - 10;
     this.y = (y * rowHeight) + (0.5 * rowHeight) + 73;
-    this.sprite = 'images/coin.png';
+    this.sprite = 'images/big-coin.png';
 };
 
 Coin.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+var Dash = function(time){
+  this.score = 0;
+  this.time = time;
+  this.coins = 0;
+  this.sprite = 'images/small-coin.png';
+};
+
+
+Dash.prototype.render = function(){
+  ctx.textAlign = 'center';
+  ctx.font = "12px pixel-emulator";
+  ctx.fillStyle = "#e4fffa";
+  ctx.fillText("MARIO", 50, 25);
+  ctx.fillText(this.score, 50, 40);
+  ctx.drawImage(Resources.get(this.sprite), 354, 29);
+  ctx.fillText('x', 374, 40);
+  ctx.fillText(this.coins, 390, 40);
+  ctx.fillText("WORLD", 758, 25);
+  ctx.fillText("F-1", 758, 40);
 };
 
 var allEnemies = [
@@ -166,8 +187,8 @@ var allCoins = (function(){
   }
   return coins;
 })();
-console.log(allCoins);
 var player = new Player();
+var dash = new Dash();
 
 document.addEventListener('keyup', function(e) {
     var keys = {

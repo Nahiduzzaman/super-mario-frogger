@@ -39,6 +39,8 @@ var Engine = (function(global) {
     allCoins.forEach(function(coin) {
       if(collided(player, coin)){
         allCoins.splice(allCoins.indexOf(coin), 1);
+        dash.coins ++;
+        dash.score += 100;
       }
     });
   }
@@ -85,6 +87,7 @@ var Engine = (function(global) {
       }
     }
 
+
     renderEntities();
   }
 
@@ -99,6 +102,7 @@ var Engine = (function(global) {
       enemy.render();
     });
     player.render();
+    dash.render();
   }
 
   function reset(){
@@ -116,7 +120,8 @@ var Engine = (function(global) {
       'images/mario-left.png',
       'images/small-cloud.png',
       'images/big-cloud.png',
-      'images/coin.png'
+      'images/big-coin.png',
+      'images/small-coin.png'
   ]);
 
   Resources.onReady(init);
