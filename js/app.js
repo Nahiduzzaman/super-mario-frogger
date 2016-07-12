@@ -124,6 +124,17 @@ Cloud.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+
+var Coin = function(x, y) {
+    this.x = (x * colWidth) + (0.5 * colWidth) - 10;
+    this.y = (y * rowHeight) + (0.5 * rowHeight) - 28;
+    this.sprite = 'images/coin.png';
+};
+
+Coin.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 var allEnemies = [
     new Enemy(-100, 1, 8),
     new Enemy(-100, 2, 12),
@@ -144,6 +155,18 @@ var allClouds = [
     new Cloud(-50, 1, 5),
     new Cloud(-250, 0, 1)
 ];
+
+var allCoins = (function(){
+  var coins=[];
+  for(var i = 0 ; i < numRows ; i++){
+    console.log(i);
+    for( var j = 0 ; j < numCols ; j++){
+      coins.push(new Coin(i,j));
+    }
+  }
+  return coins;
+})();
+console.log(allCoins);
 var player = new Player();
 
 document.addEventListener('keyup', function(e) {

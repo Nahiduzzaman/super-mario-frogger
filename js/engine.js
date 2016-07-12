@@ -84,6 +84,9 @@ var Engine = (function(global) {
     allClouds.forEach(function(cloud){
       cloud.render();
     });
+    allCoins.forEach(function(coin){
+      coin.render();
+    });
     allEnemies.forEach(function(enemy){
       enemy.render();
     });
@@ -102,8 +105,8 @@ var Engine = (function(global) {
       'images/mario-right.png',
       'images/mario-left.png',
       'images/small-cloud.png',
-      'images/big-cloud.png'
-
+      'images/big-cloud.png',
+      'images/coin.png'
   ]);
 
   Resources.onReady(init);
