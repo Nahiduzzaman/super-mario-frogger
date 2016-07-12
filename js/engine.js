@@ -68,7 +68,7 @@ var Engine = (function(global) {
   function render() {
     var rowImages = [
       'images/plain-sky-block.png',
-      'images/sky-block.png',
+      'images/bridge-block.png',
       'images/bridge-block.png',
       'images/bridge-block.png',
       'images/bridge-block.png',
