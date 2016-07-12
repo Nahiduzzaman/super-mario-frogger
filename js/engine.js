@@ -35,6 +35,12 @@ var Engine = (function(global) {
         player.y = bounds.bottom;
       }
     });
+
+    allCoins.forEach(function(coin) {
+      if(collided(player, coin)){
+        allCoins.splice(allCoins.indexOf(coin), 1);
+      }
+    });
   }
 
   function collided(player, entity) {
