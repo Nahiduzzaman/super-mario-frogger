@@ -135,13 +135,13 @@ var allEnemies = [
 var allClouds = [
     new Cloud(0, 0, 1),
     new Cloud(-800, 3, 2),
-    new Cloud(-600, 2, 3),
+    new Cloud(-600, 1, 3),
     new Cloud(-100, 4, 5),
-    new Cloud(-500, 2, 1),
+    new Cloud(-100, 2, 1),
     new Cloud(0, 1, 1),
     new Cloud(-400, 2, 2),
-    new Cloud(-300, 4, 3),
-    new Cloud(-50, 2, 5),
+    new Cloud(-300, 0, 3),
+    new Cloud(-50, 1, 5),
     new Cloud(-250, 0, 1)
 ];
 var player = new Player();
