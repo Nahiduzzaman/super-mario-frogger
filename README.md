@@ -9,6 +9,6 @@ The game engine is contained within [the engine ](https://github.com/zakhttp/sup
 
 The project uses an image loading and caching utility that can be found in [resources.js ](https://github.com/zakhttp/super-mario-frogger/blob/super-mario/js/resources.js) .
 
-Please feel free to use it in case you feel it it will be useful in any of your projects, don't forget to star the repository.
+Please feel free to use it in case you find it useful in any of your projects, don't forget to star the repository.
 
 Cheers!
