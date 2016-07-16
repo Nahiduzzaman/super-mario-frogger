@@ -1,5 +1,10 @@
 # Super Mario Frogger game
 This a reproduction of the 80's frogger game with a Super Mario Bros flavor.
+
+![screenshot of the super mario frogger game][logo]
+
+[logo]: /images/screenshot.jpg "screenshot of the super mario frogger game"
+
 ## Installation
 Use the following command `git clone https://github.com/zakhttp/super-mario-frogger.git`.
 
